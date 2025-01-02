@@ -1,0 +1,121 @@
+name: Generate Documentation Structure
+
+on:
+  create:
+    paths:
+      - creation.txt
+
+jobs:
+  create-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up directories for documentation
+      run: |
+        # Create the folder structure for the documentation
+        mkdir -p GodfatherSolarSystemUniverse/{Nations,Technologies,Resources,Cold-War,The-Multiverse,Characters,Miscellaneous}
+        mkdir -p GodfatherSolarSystemUniverse/Nations/{United-Helios-Coalition,Neo-Terran-Federation,Crimson-Dominion,Aetherian-Republic,Valkyrian-Empire,Hyperion-Syndicate,Eclipse-Order,Arcturian-Pact,Solar-Ascendancy,Omega-Union}
+        mkdir -p GodfatherSolarSystemUniverse/Technologies/{Hyper-Drive-Warp,Plasma-Weapons,AI-and-Diplomacy,Cryotechnology,Genetic-Engineering,Solar-Energy-Weapons}
+        mkdir -p GodfatherSolarSystemUniverse/Resources/{Resource-Wars,The-Jesus-Star,Planetary-Resources,Energy-Manipulation}
+        mkdir -p GodfatherSolarSystemUniverse/Cold-War/{Key-Conflicts,Espionage-and-Double-Agents,Alliances-and-Betrayals,Race-for-Hyper-Warp}
+        mkdir -p GodfatherSolarSystemUniverse/The-Multiverse/{Multiverse-Theory,The-Great-Beyond,Multiverse-Expeditions,Dimensions-and-Realms}
+        mkdir -p GodfatherSolarSystemUniverse/Characters/{Admiral-Kain-Solaris,Agent-Zora-Nyx,Archon-Vex-Umbra,Dr.-Lyra-Valen,Commander-Talyn-Ironfist}
+        mkdir -p GodfatherSolarSystemUniverse/Miscellaneous/{Glossary,Timeline,Important-Events,Factions}
+        
+    - name: Create the Index.md file
+      run: |
+        cat > GodfatherSolarSystemUniverse/Index.md <<EOF
+# Welcome to the Godfather Solar System Universe Documentation
+
+The Godfather Solar System is a vast and complex universe set in the **Andromeda Galaxy** in the year **99986**. This documentation serves as the central hub for all information regarding the nations, technologies, conflicts, characters, and other aspects of this thrilling setting.
+
+---
+
+## Table of Contents
+
+1. [Nations](./Nations/)
+   - Overview of the 10 nations that inhabit the Godfather Solar System.
+   - [United Helios Coalition](./Nations/United-Helios-Coalition.md)
+   - [Neo-Terran Federation](./Nations/Neo-Terran-Federation.md)
+   - [Crimson Dominion](./Nations/Crimson-Dominion.md)
+   - [Aetherian Republic](./Nations/Aetherian-Republic.md)
+   - [Valkyrian Empire](./Nations/Valkyrian-Empire.md)
+   - [Hyperion Syndicate](./Nations/Hyperion-Syndicate.md)
+   - [Eclipse Order](./Nations/Eclipse-Order.md)
+   - [Arcturian Pact](./Nations/Arcturian-Pact.md)
+   - [Solar Ascendancy](./Nations/Solar-Ascendancy.md)
+   - [Omega Union](./Nations/Omega-Union.md)
+
+2. [Technologies](./Technologies/)
+   - A deep dive into the cutting-edge technologies used in the Godfather Solar System.
+   - [Hyper-Drive-Warp](./Technologies/Hyper-Drive-Warp.md)
+   - [Plasma Weapons](./Technologies/Plasma-Weapons.md)
+   - [AI and Diplomacy](./Technologies/AI-and-Diplomacy.md)
+   - [Cryotechnology](./Technologies/Cryotechnology.md)
+   - [Genetic Engineering](./Technologies/Genetic-Engineering.md)
+   - [Solar Energy Weapons](./Technologies/Solar-Energy-Weapons.md)
+
+3. [Resources](./Resources/)
+   - The resources of the system and the crucial battles fought over them.
+   - [Resource Wars](./Resources/Resource-Wars.md)
+   - [The Jesus Star](./Resources/The-Jesus-Star.md)
+   - [Planetary Resources](./Resources/Planetary-Resources.md)
+   - [Energy Manipulation](./Resources/Energy-Manipulation.md)
+
+4. [Cold War](./Cold-War/)
+   - The ongoing tensions and alliances that define the current geopolitical landscape.
+   - [Key Conflicts](./Cold-War/Key-Conflicts.md)
+   - [Espionage and Double Agents](./Cold-War/Espionage-and-Double-Agents.md)
+   - [Alliances and Betrayals](./Cold-War/Alliances-and-Betrayals.md)
+   - [Race for Hyper-Warp](./Cold-War/Race-for-Hyper-Warp.md)
+
+5. [The Multiverse](./The-Multiverse/)
+   - Explore the multiverse theory, expeditions, and realms that could change the fate of all nations.
+   - [Multiverse Theory](./The-Multiverse/Multiverse-Theory.md)
+   - [The Great Beyond](./The-Multiverse/The-Great-Beyond.md)
+   - [Multiverse Expeditions](./The-Multiverse/Multiverse-Expeditions.md)
+   - [Dimensions and Realms](./The-Multiverse/Dimensions-and-Realms.md)
+
+6. [Characters](./Characters/)
+   - Detailed profiles of key figures, including military commanders, spies, and visionary leaders.
+   - [Admiral Kain Solaris](./Characters/Admiral-Kain-Solaris.md)
+   - [Agent Zora Nyx](./Characters/Agent-Zora-Nyx.md)
+   - [Archon Vex Umbra](./Characters/Archon-Vex-Umbra.md)
+   - [Dr. Lyra Valen](./Characters/Dr.-Lyra-Valen.md)
+   - [Commander Talyn Ironfist](./Characters/Commander-Talyn-Ironfist.md)
+
+7. [Miscellaneous](./Miscellaneous/)
+   - Glossary, timelines, and important events that shape the universe.
+   - [Glossary](./Miscellaneous/Glossary.md)
+   - [Timeline](./Miscellaneous/Timeline.md)
+   - [Important Events](./Miscellaneous/Important-Events.md)
+   - [Factions](./Miscellaneous/Factions.md)
+
+EOF
+
+    - name: Create Nation Files
+      run: |
+        # Nation-related markdown files (For example, create a template for each)
+        cat > GodfatherSolarSystemUniverse/Nations/United-Helios-Coalition.md <<EOF
+# United Helios Coalition
+
+The **United Helios Coalition (UHC)** is a powerful democratic federation that originated from a coalition of Earth's Western nations. Following the catastrophic gas release on Earth in 98921, the UHC, along with several other factions, fled to the Godfather Solar System. With their highly advanced military and political influence, the UHC stands as a symbol of unity and leadership in the region.
+
+## History and Formation
+
+(Description continues...)
+
+EOF
+
+        # Repeat for other nation files, etc.
+        
+    - name: Commit and Push changes
+      run: |
+        git config --global user.email "github-actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git add .
+        git commit -m "Generate initial documentation structure"
+        git push origin main
